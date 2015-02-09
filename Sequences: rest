@@ -1,0 +1,12 @@
+https://www.4clojure.com/problem/13
+
+Difficulty:	Elementary
+Topics:	
+
+The rest function will return all the items of a sequence except the first.
+
+1. (= __ (rest [10 20 30 40]))
+
+Solutions:
+
+1. '(20 30 40)
