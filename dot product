@@ -13,5 +13,6 @@ Create a function that computes the dot product of two sequences. You may assume
 Solutions:
 
 1. #(apply + (map * %1 %2))
+
   Similarly:
     #(reduce + (map * %1 %2))
