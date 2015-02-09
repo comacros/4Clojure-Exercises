@@ -1,0 +1,12 @@
+https://www.4clojure.com/problem/37
+
+Difficulty:	Elementary
+Topics:	regex syntax
+
+Regex patterns are supported with a special reader macro.
+
+1. (= __ (apply str (re-seq #"[A-Z]+" "bA1B3Ce ")))
+
+Solutions:
+
+1. "ABC"
