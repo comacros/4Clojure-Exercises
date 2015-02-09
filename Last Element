@@ -1,0 +1,16 @@
+https://www.4clojure.com/problem/19
+
+Difficulty: Easy
+Topics: seqs core-functions
+
+Write a function which returns the last element in a sequence.
+
+Special Restrictions: last
+
+1. (= (__ [1 2 3 4 5]) 5)
+2. (= (__ '(5 4 3)) 3)
+3. (= (__ ["b" "c" "d"]) "d)
+
+Solutions:
+
+1. reduce (fn [x y] y) nil
