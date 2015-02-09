@@ -1,0 +1,13 @@
+https://www.4clojure.com/problem/8
+
+Difficulty: Elementary
+Topics:
+
+Sets are collections of unique values.
+
+1. (= __ (set '(:a :a :b :c :c :c :c :d :d)))
+2. (= __ (clojure.set/union #{:a :b :c} #{:b :c :d}))
+
+Solutions:
+
+1. #{:a :b :c :d}
