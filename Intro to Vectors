@@ -1,0 +1,12 @@
+https://www.4clojure.com/problem/6
+
+Difficulty: Elementary
+Topics:
+
+Vectors can be constructed several ways. You can compare them with lists.
+
+1. (= [__] (list :a :b :c) (vec '(:a :b :c)) (vector :a :b :c))
+
+Solutions:
+
+1. :a :b :c
