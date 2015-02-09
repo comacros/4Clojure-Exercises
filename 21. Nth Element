@@ -5,6 +5,8 @@ Topics:	seqs core-functions
 
 Write a function which returns the Nth element from a sequence.
 
+Special Restrictions: nth
+
 1. (= (__ '(4 5 6 7) 2) 6)
 2. (= (__ [:a :b :c] 0) :a)
 3. (= (__ [1 2 3 4] 1) 2)
