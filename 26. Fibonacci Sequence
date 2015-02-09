@@ -1,0 +1,18 @@
+https://www.4clojure.com/problem/26
+
+Difficulty:	Easy
+Topics:	Fibonacci seqs
+
+Write a function which returns the first X fibonacci numbers.
+
+1. (= (__ 3) '(1 1 2))
+2. (= (__ 6) '(1 1 2 3 5 8))
+3. (= (__ 8) '(1 1 2 3 5 8 13 21))
+
+Solutions:
+
+1. #(map (fn fib [n]
+           (if (> n 2)
+             (+ (fib (- n 1)) (fib (- n 2)))
+             1))
+         (map inc (range %)))
