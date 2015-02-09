@@ -1,0 +1,14 @@
+https://www.4clojure.com/problem/20
+
+Difficulty: Easy
+Topics: seqs
+
+Write a function which returns he second to the last element from a sequence.
+
+1. (= (__ (list 1 2 3 4 5)) 4)
+2. (= (__ ["a" "b" "c"]) "b")
+3. (= (__ [[1 2] [3 4]]) [1 2])
+
+Solutions:
+
+1. #(second (reverse %))
