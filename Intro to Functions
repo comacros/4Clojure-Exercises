@@ -1,0 +1,15 @@
+https://www.4clojure.com/problem/14
+
+Difficulty:	Elementary
+Topics:	
+
+Clojure has many different ways to create functions.
+
+1. (= __ ((fn add-five [x] (+ x 5)) 3))
+2. (= __ ((fn [x] (+ x 5)) 3))
+3. (= __ (#(+ % 5) 3))
+4. (= __ ((partial + 5) 3))
+
+Solutions:
+
+1. 8
