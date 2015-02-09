@@ -1,0 +1,18 @@
+https://www.4clojure.com/problem/21
+
+Difficulty:	Easy
+Topics:	seqs core-functions
+
+Write a function which returns the Nth element from a sequence.
+
+1. (= (__ '(4 5 6 7) 2) 6)
+2. (= (__ [:a :b :c] 0) :a)
+3. (= (__ [1 2 3 4] 1) 2)
+4. (= (__ '([1 2] [3 4] [5 6]) 2) [5 6])
+
+Solutions:
+
+1. (fn foo [s n]
+     (if (= 0 n)
+       (first s)
+       (foo (rest s) (dec n))))
