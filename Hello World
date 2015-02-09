@@ -1,0 +1,14 @@
+https://www.4clojure.com/problem/16
+
+Difficulty: Elementary
+Topics:
+
+Write a function which returns a personalized greeting.
+
+1. (= (__ "Dave") "Hello, Dave!")
+2. (= (__ "Jenn") "Hello, Jenn!")
+3. (= (__ "Rhea") "Hello, Rhea!")
+
+Solutions:
+
+1. #(str "Hello, " % "!")
