@@ -1,0 +1,12 @@
+https://www.4clojure.com/problem/3
+
+Difficulty: Elementary
+Topics:
+
+Clojure strings are Java strings. This means that you can use any of the Java methods on Clojure strings.
+
+1. (= __ (.toUpperCase "hello world"))
+
+Solutions:
+
+1. "HELLO WORLD"
