@@ -1,0 +1,18 @@
+https://www.4clojure.com/problem/162
+
+Difficulty:	Elementary
+Topics:	logic
+
+In Clojure, only nil and false represent the values of logical falsity in conditional tests - anything else is logical truth.
+
+1. (= __ (if-not false 1 0))
+2. (= __ (if-not nil 1 0))
+3. (= __ (if true 1 0))
+4. (= __ (if [] 1 0))
+5. (= __ (if [0] 1 0))
+6. (= __ (if 0 1 0))
+7. (= __ (if 1 1 0))
+
+Solutions:
+
+1. 1
