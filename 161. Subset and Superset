@@ -1,0 +1,15 @@
+https://www.4clojure.com/problem/161
+
+Difficulty:	Elementary
+Topics:	set-theory
+
+Set A is a subset of set B, or equivalently B is a superset of A, if A is "contained" inside B. A and B may coincide.
+
+1. (clojure.set/superset? __ #{2})
+2. (clojure.set/subset? #{1} __)
+3. (clojure.set/superset? __ #{1 2})
+4. (clojure.set/subset? #{1 2} __)
+
+Solutions:
+
+1. #{1 2}
