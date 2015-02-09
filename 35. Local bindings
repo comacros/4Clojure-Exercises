@@ -1,0 +1,14 @@
+https://www.4clojure.com/problem/35
+
+Difficulty:	Elementary
+Topics:	syntax
+
+Clojure lets you give local names to values using the special let-form.
+
+1. (= __ (let [x 5] (+ 2 x)))
+2. (= __ (let [x 3, y 10] (- y x)))
+3. (= __ (let [x 21] (let [y 3] (/ x y))))
+
+Solutions:
+
+1. 7
