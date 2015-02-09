@@ -1,0 +1,18 @@
+https://www.4clojure.com/problem/134
+
+Difficulty: Elementary
+Topics:     maps
+
+Write a function which, given a key and map, returns true iff the map contains an entry with that key and its value is nil.
+
+1. (true? (__ :a {:a nil :b 2}))
+2. (false? (__ :b {:a nil :b 2}))
+3. (false? (__ :c {:a nil :b 2}))
+
+Solutions:
+
+1. #(= nil (get %2 %1 true))
+
+  Similarly:
+    #(nil? (get %2 %1 true))
+    #(nil? (%2 %1 true))
