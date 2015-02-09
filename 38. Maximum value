@@ -1,0 +1,19 @@
+http://www.4clojure.com/problem/38
+
+Difficulty:	Easy
+Topics:	core-functions
+
+Write a function which takes a variable number of parameters and returns the maximum value.
+
+Special Restrictions: max max-key
+
+1. (= (__ 1 8 3 4) 8)
+2. (= (__ 30 20) 30)
+3. (= (__ 45 67 11) 67)
+
+Solutions:
+
+1. (fn foo
+     ([x] x)
+     ([x y] (if (> x y) x y))
+     ([x y & more] (reduce foo (foo x y) more)))
