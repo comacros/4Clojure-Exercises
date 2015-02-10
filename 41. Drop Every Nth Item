@@ -1,0 +1,14 @@
+https://www.4clojure.com/problem/41
+
+Difficulty:	Easy
+Topics:	seqs
+
+Write a function which drops every Nth item from a sequence.
+
+1. (= (__ [1 2 3 4 5 6 7 8] 3) [1 2 4 5 7 8])
+2. (= (__ [:a :b :c :d :e :f] 2) [:a :c :e])
+3. (= (__ [1 2 3 4 5 6] 4) [1 2 3 5 6])
+
+Solutions:
+
+1. #(reduce concat (partition-all (dec %2) %2 %1))
