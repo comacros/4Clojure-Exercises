@@ -1,0 +1,18 @@
+https://www.4clojure.com/problem/42
+
+Difficulty:	Easy
+Topics:	math
+
+Write a function which calculates factorials.
+
+1. (= (__ 1) 1)
+2. (= (__ 3) 6)
+3. (= (__ 5) 120)
+4. (= (__ 8) 40320)
+
+Solutions:
+
+1. (fn foo [n]
+     (if (= 1 n)
+       1
+       (* n (foo (dec n)))))
