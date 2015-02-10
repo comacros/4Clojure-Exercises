@@ -1,0 +1,20 @@
+https://www.4clojure.com/problem/34
+
+Difficulty:	Easy
+Topics:	seqs core-functions
+
+Write a function which creates a list of all integers in a given range.
+
+Special Restrictions: range
+
+1. (= (__ 1 4) '(1 2 3))
+2. (= (__ -2 2) '(-2 -1 0 1))
+3. (= (__ 5 8) '(5 6 7))
+
+Solutions:
+
+1. (fn foo [begin, end]
+     (loop [i (dec end), result '()]
+       (if (< i begin)
+         result
+         (recur (dec i) (conj result i)))))
