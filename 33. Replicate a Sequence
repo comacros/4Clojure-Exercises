@@ -1,0 +1,19 @@
+http://www.4clojure.com/problem/33
+
+Difficulty:	Easy
+Topics:	seqs
+
+Write a function which replicates each element of a sequence a variable number of times.
+
+1. (= (__ [1 2 3] 2) '(1 1 2 2 3 3))
+2. (= (__ [:a :b] 4) '(:a :a :a :a :b :b :b :b))
+3. (= (__ [4 5 6] 1) '(4 5 6))
+4. (= (__ [[1 2] [3 4]] 2) '([1 2] [1 2] [3 4] [3 4]))
+5. (= (__ [44 33] 2) [44 44 33 33])
+
+Solutions:
+
+1. (fn foo [xs n]
+     (if (first xs)
+       (concat (repeat n (first xs))
+               (foo (rest xs) n))))
