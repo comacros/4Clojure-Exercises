@@ -1,0 +1,14 @@
+https://www.4clojure.com/problem/29
+
+Difficulty:	Easy
+Topics:	strings
+
+Write a function which takes a string and returns a new string containing only the capital letters.
+
+1. (= (__ "HeLlO, WoRlD!") "HLOWRD")
+2. (empty? (__ "nothing"))
+3. (= (__ "$#A(*&987Zf") "AZ")
+
+Solutions:
+
+1. #(apply str (re-seq #"[A-Z]+" %))
