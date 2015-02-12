@@ -1,0 +1,12 @@
+https://www.4clojure.com/problem/45
+
+Difficulty:	Easy
+Topics:	seqs
+
+The iterate function can be used to produce an infinite lazy sequence.
+
+1. (= __ (take 5 (iterate #(+ 3 %) 1)))
+
+Solutions:
+
+1. '(1 4 7 10 13)
