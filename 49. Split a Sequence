@@ -1,0 +1,17 @@
+https://www.4clojure.com/problem/49
+
+Difficulty:	Easy
+Topics:	seqs core-functions
+
+Write a function which will split a sequence into two parts.
+
+Special Restrictions: split-at
+
+1. (= (__ 3 [1 2 3 4 5 6]) [[1 2 3] [4 5 6]])
+2. (= (__ 1 [:a :b :c :d]) [[:a] [:b :c :d]])
+3. (= (__ 2 [[1 2] [3 4] [5 6]]) [[[1 2] [3 4]] [[5 6]]])
+
+Solutions:
+
+1. (fn [n xs]
+     (conj [] (take n xs) (drop n xs)))
