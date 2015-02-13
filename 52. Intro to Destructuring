@@ -1,0 +1,12 @@
+https://www.4clojure.com/problem/52
+
+Difficulty:	Easy
+Topics:	destructuring
+
+Let bindings and function parameter lists support destructuring.
+
+1. (= [2 4] (let [[a b c d e f g] (range)] __))
+
+Solutions:
+
+1. [c e]
