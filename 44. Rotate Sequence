@@ -1,0 +1,23 @@
+http://www.4clojure.com/problem/44
+
+Difficulty:	Medium
+Topics:	seqs
+
+Write a function which can rotate a sequence in either direction.
+
+1. (= (__ 2 [1 2 3 4 5]) '(3 4 5 1 2))
+2. (= (__ -2 [1 2 3 4 5]) '(4 5 1 2 3))
+3. (= (__ 6 [1 2 3 4 5]) '(2 3 4 5 1))
+4. (= (__ 1 '(:a :b :c)) '(:b :c :a))
+5. (= (__ -4 '(:a :b :c)) '(:c :a :b))
+
+Solutions:
+
+1. (fn foo [n xs]
+     (if (> n 0)
+       (let [k (rem n (count xs))]
+         (concat (drop k xs) (take k xs)))
+       (let [m (- 0 n)
+             k (rem m (count xs))
+             l (- (count xs) k)]
+         (concat (drop l xs) (take l xs)))))
