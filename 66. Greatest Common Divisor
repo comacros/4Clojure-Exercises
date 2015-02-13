@@ -1,0 +1,19 @@
+http://www.4clojure.com/problem/66
+
+Difficulty:	Easy
+Topics:	
+
+Given two integers, write a function which returns the greatest common divisor.
+
+1. (= (__ 2 4) 2)
+2. (= (__ 10 5) 5)
+3. (= (__ 5 7) 1)
+4. (= (__ 1023 858) 33)
+
+Solutions:
+
+1. (fn gcd [x y]
+     (let [r (rem x y)]
+       (if (= 0 r)
+         y
+         (gcd y r))))
