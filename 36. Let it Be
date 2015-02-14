@@ -1,0 +1,14 @@
+http://www.4clojure.com/problem/36
+
+Difficulty:	Elementary
+Topics:	math syntax
+
+Can you bind x, y, and z so that these are all true?
+
+1. (= 10 (let __ (+ x y)))
+2. (= 4 (let __ (+ y z)))
+3. (= 1 (let __ z))
+
+Solutions:
+
+1. [x 7 y 3 z 1]
