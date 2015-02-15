@@ -1,0 +1,21 @@
+http://www.4clojure.com/problem/55
+
+Difficulty:	Medium
+Topics:	seqs core-functions
+
+Write a function which returns a map containing the number of occurences of each distinct item in a sequence.
+
+Special Restrictions: frequencies
+
+1. (= (__ [1 1 2 3 2 1 1]) {1 4, 2 2, 3 1})
+2. (= (__ [:b :a :b :a :b]) {:a 2, :b 3})
+3. (= (__ '([1 2] [1 3] [1 3])) {[1 2] 1, [1 3] 2})
+
+Solutions:
+
+1. (fn baz [xs]
+     (let [xs-unique (reduce conj #{} xs)
+           count-if (fn [y zs]
+                      (count (for [z zs :when (= y z)] z)))
+           pairs (for [x xs-unique] (hash-map x (count-if x xs)))]
+       (apply conj pairs)))
