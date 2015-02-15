@@ -1,0 +1,31 @@
+https://www.4clojure.com/problem/67
+
+Prime Numbers
+ 
+Difficulty:	Medium
+Topics:	primes
+
+Write a function which returns the first x number of prime numbers.
+
+1. (= (__ 2) [2 3])
+2. (= (__ 5) [2 3 5 7 11])
+3. (= (last (__ 100)) 541)
+
+Solutions:
+
+1. (fn foo [n]
+     (let [is-not-prime (fn [x]
+                          (if (< x 2)
+                            true
+                            (if (= x 2)
+                              nil
+                              (loop [k 2]
+                                (if (>= k x)
+                                  nil
+                                  (if (not= 0 (rem x k))
+                                    (recur (inc k))
+                                    true))))))
+           primes (for [x (range)
+                        :when (not (is-not-prime x))]
+                    x)]
+       (vec (take n primes))))
