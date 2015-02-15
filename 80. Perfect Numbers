@@ -1,0 +1,20 @@
+http://www.4clojure.com/problem/80
+
+Difficulty:	Medium
+Topics:	
+
+A number is "perfect" if the sum of its divisors equal the number itself. 6 is a perfect number because 1+2+3=6. Write a function which returns true for perfect numbers and false otherwise.
+
+1. (= (__ 6) true)
+2. (= (__ 7) false)
+3. (= (__ 496) true)
+4. (= (__ 500) false)
+5. (= (__ 8128) true)
+
+Solutions:
+
+1. (fn foo [n]
+     (let [n2 (int (Math/sqrt n))
+           divisors (for [x (range 1 (inc n2))
+                          :when (= 0 (rem n x))] [x (/ n x)])]
+       (= (apply + (flatten divisors)) (* 2 n))))
