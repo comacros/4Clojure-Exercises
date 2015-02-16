@@ -1,0 +1,18 @@
+http://www.4clojure.com/problem/70
+
+Difficulty:	Medium
+Topics:	sorting
+
+Write a function that splits a sentence up into a sorted list of words. Capitalization should not affect sort order and punctuation should be ignored.
+
+1. (= (__  "Have a nice day.")
+      ["a" "day" "Have" "nice"])
+2. (= (__  "Clojure is a fun language!")
+      ["a" "Clojure" "fun" "is" "language"])
+3. (= (__  "Fools fall for foolish follies.")
+      ["fall" "follies" "foolish" "Fools" "for"])
+
+Solutions:
+
+1. #(sort (fn [x y] (compare (.toUpperCase x) (.toUpperCase y)))
+          (re-seq #"\w+" %))
