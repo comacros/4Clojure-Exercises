@@ -1,0 +1,21 @@
+https://www.4clojure.com/problem/81
+
+Difficulty:	Easy
+Topics:	set-theory
+
+Write a function which returns the intersection of two sets. The intersection is the sub-set of items that each set has in common.
+
+Special Restrictions: intersection
+
+1. (= (__ #{0 1 2 3} #{2 3 4 5}) #{2 3})
+2. (= (__ #{0 1 2} #{3 4 5}) #{})
+3. (= (__ #{:a :b :c :d} #{:c :e :a :f :d}) #{:a :c :d})
+
+Solutions:
+
+1. (fn foo [xset yset]
+     (let [xlist (apply conj '() xset)
+           ylist (apply conj '() yset)
+           xylist (concat xlist ylist)
+           xyfreq (frequencies xylist)]
+       (set (for [kv xyfreq :when (> (second kv) 1)] (first kv)))))
