@@ -19,3 +19,5 @@ Solutions:
             (for [x (map int %)] (- x 48)))
 
 2. #(Integer/parseInt % 2)
+
+3. #(BigInteger. % 2)
