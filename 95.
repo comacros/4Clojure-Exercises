@@ -1,0 +1,31 @@
+http://www.4clojure.com/problem/95
+ 
+Difficulty:	Easy
+Topics:	trees
+
+Write a predicate which checks whether or not a given sequence represents a binary tree. Each node in the tree must have a value, a left child, and a right child.
+
+1. (= (__ '(:a (:b nil nil) nil))
+      true)
+2. (= (__ '(:a (:b nil nil)))
+      false)
+3. (= (__ [1 nil [2 [3 nil nil] [4 nil nil]]])
+      true)
+4. (= (__ [1 [2 nil nil] [3 nil nil] [4 nil nil]])
+      false)
+5. (= (__ [1 [2 [3 [4 nil nil] nil] nil] nil])
+      true)
+6. (= (__ [1 [2 [3 [4 false nil] nil] nil] nil])
+      false)
+7. (= (__ '(:a nil ()))
+      false)
+
+Solutions:
+
+1. (fn is-binary-tree [xs]
+     (if (coll? xs)
+       (if (not= 3 (count xs))
+         false
+         (and (is-binary-tree (nth xs 1))
+              (is-binary-tree (nth xs 2))))
+       (nil? xs)))
