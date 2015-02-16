@@ -1,0 +1,24 @@
+https://www.4clojure.com/problem/86
+
+Difficulty:	Medium
+Topics:	math
+
+Happy numbers are positive integers that follow a particular formula: take each individual digit, square it, and then sum the squares to get a new number. Repeat with the new number and eventually, you might get to a number whose squared sum is 1. This is a happy number. An unhappy number (or sad number) is one that loops endlessly. Write a function that determines if a number is happy or not.
+
+1. (= (__ 7) true)
+2. (= (__ 986543210) true)
+3. (= (__ 2) false)
+4. (= (__ 3) false)
+
+Solutions:
+
+1. (fn foo [n]
+     (let [bar (fn [x]
+                 (loop [y x z 0]
+                   (if (not= y 0)
+                     (recur (quot y 10) (+ z (* (rem y 10) (rem y 10))))
+                     z)))]
+       (loop [y n]
+         (if (>= y 10)
+           (recur (bar y))
+           (or (= y 1) (= y 7))))))
