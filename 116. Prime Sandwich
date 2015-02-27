@@ -1,0 +1,47 @@
+http://www.4clojure.com/problem/116
+ 
+Difficulty:	Medium
+Topics:	math
+
+A balanced prime is a prime number which is also the mean of the primes directly before and after it in the sequence of valid primes. Create a function which takes an integer n, and returns true iff it is a balanced prime.
+
+1. (= false (__ 4))
+2. (= true (__ 563))
+3. (= 1103 (nth (filter __ (range)) 15))
+
+Solutions:
+
+1. (fn balanced-prime? [x]
+     (let [prime? (fn [x]
+                    (if (< x 2)
+                      false
+                      (if (= x 2)
+                        true
+                        (if (zero? (rem x 2))
+                          false
+                          (loop [n 3]
+                            (if (> (* n n) x)
+                              true
+                              (if (zero? (rem x n))
+                                false
+                                (recur (+ 2 n)))))))))
+           prev-prime (fn [x]
+                        (loop [n (dec x)]
+                          (if (prime? n)
+                            n
+                            (if (zero? n)
+                              nil
+                              (recur (dec n))))))
+           next-prime (fn [x]
+                        (loop [n (inc x)]
+                          (if (prime? n)
+                            n
+                            (recur (inc n)))))]
+       (if (not (prime? x))
+         false
+         (let [a (prev-prime x)
+               b (next-prime x)]
+           (if (nil? a)
+             false
+             (= (+ x x)
+                (+ a b)))))))
