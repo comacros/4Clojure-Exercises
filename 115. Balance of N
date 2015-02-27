@@ -1,0 +1,26 @@
+https://www.4clojure.com/problem/115
+ 
+Difficulty:	Medium
+Topics:	math
+
+A balanced number is one whose component digits have the same sum on the left and right halves of the number. Write a function which accepts an integer n, and returns true iff n is balanced.
+
+1. (= true (__ 11))
+2. (= true (__ 121))
+3. (= false (__ 123))
+4. (= true (__ 0))
+5. (= false (__ 88099))
+6. (= true (__ 89098))
+7. (= true (__ 89089))
+8. (= (take 20 (filter __ (range)))
+      [0 1 2 3 4 5 6 7 8 9 11 22 33 44 55 66 77 88 99 101])
+
+Solutions:
+
+1. (fn foo [x]
+     (let [s (str x)
+           halfn (quot (count s) 2)
+           s1 (take halfn s)
+           s2 (take halfn (reverse s))]
+       (= (apply + (for [_ s1] (int _)))
+          (apply + (for [_ s2] (int _))))))
