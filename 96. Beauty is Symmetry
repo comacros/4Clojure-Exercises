@@ -1,0 +1,29 @@
+http://www.4clojure.com/problem/96
+
+Difficulty:	Easy
+Topics:	trees
+
+Let us define a binary tree as "symmetric" if the left half of the tree is the mirror image of the right half of the tree. Write a predicate to determine whether or not a given binary tree is symmetric. (see To Tree, or not to Tree for a reminder on the tree representation we're using).
+
+1. (= (__ '(:a (:b nil nil) (:b nil nil))) true)
+2. (= (__ '(:a (:b nil nil) nil)) false)
+3. (= (__ '(:a (:b nil nil) (:c nil nil))) false)
+4. (= (__ [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]]
+             [2 [3 nil [4 [6 nil nil] [5 nil nil]]] nil]])
+      true)
+5. (= (__ [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]]
+             [2 [3 nil [4 [5 nil nil] [6 nil nil]]] nil]])
+      false)
+6. (= (__ [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]]
+             [2 [3 nil [4 [6 nil nil] nil]] nil]])
+      false)
+
+Solutions:
+
+1. #(let [g (fn f [x i j]
+                 (if (coll? x)
+                   (concat [(nth x 0)]
+                           (f (nth x i) i j)
+                           (f (nth x j) i j))
+                   [x]))]
+       (= (g % 1 2) (g % 2 1)))
