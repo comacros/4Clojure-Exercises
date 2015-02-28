@@ -1,0 +1,29 @@
+https://www.4clojure.com/problem/105
+ 
+Difficulty:	Medium
+Topics:	maps seqs
+
+Given an input sequence of keywords and numbers, create a map such that each key in the map is a keyword, and the value is a sequence of all the numbers (if any) between it and the next keyword in the sequence.
+
+1. (= {} (__ []))
+2. (= {:a [1]} (__ [:a 1]))
+3. (= {:a [1], :b [2]} (__ [:a 1, :b 2]))
+4. (= {:a [1 2 3], :b [], :c [4]} (__ [:a 1 2 3 :b :c 4]))
+
+Solutions:
+
+1. (fn [xs]
+     (let [f (fn [ys]
+                 (if (= 0 (count ys))
+                   (hash-map)
+                   (hash-map (first ys)
+                             (vec (take-while (fn [_] (not= (class :0)
+                                                            (class _)))
+                                              (rest ys))))))]
+        (loop [ys xs z {}]
+          (if (= 0 (count ys))
+            z
+            (let [_ (f ys)]
+              (recur (drop (+ 1 (count (_ (first (keys _)))))
+                           ys)
+                     (into z _)))))))
