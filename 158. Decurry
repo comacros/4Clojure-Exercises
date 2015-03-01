@@ -1,0 +1,33 @@
+http://www.4clojure.com/problem/158
+ 
+Difficulty:	Medium
+Topics:	partial-functions
+
+Write a function that accepts a curried function of unknown arity n. Return an equivalent function of n arguments.
+You may wish to read this.
+
+1. (= 10 ((__ (fn [a]
+                (fn [b]
+                  (fn [c]
+                    (fn [d]
+                      (+ a b c d))))))
+          1 2 3 4))
+2. (= 24 ((__ (fn [a]
+                (fn [b]
+                  (fn [c]
+                    (fn [d]
+                      (* a b c d))))))
+          1 2 3 4))
+3. (= 25 ((__ (fn [a]
+                (fn [b]
+                  (* a b))))
+          5 5))
+
+Solutions:
+
+1. (fn foo [fs]
+     (fn bar [& more]
+       (loop [x more, y fs]
+         (if (empty? x)
+           y
+           (recur (rest x) (y (first x)))))))
