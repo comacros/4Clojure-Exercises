@@ -1,0 +1,53 @@
+http://www.4clojure.com/problem/73
+ 
+Difficulty:	Hard
+Topics:	game
+
+A tic-tac-toe board is represented by a two dimensional vector. X is represented by :x, O is represented by :o, and empty is represented by :e. A player wins by placing three Xs or three Os in a horizontal, vertical, or diagonal row. Write a function which analyzes a tic-tac-toe board and returns :x if X has won, :o if O has won, and nil if neither player has won.
+
+1. (= nil (__ [[:e :e :e]
+               [:e :e :e]
+               [:e :e :e]]))
+2. (= :x (__ [[:x :e :o]
+              [:x :e :e]
+              [:x :e :o]]))
+3. (= :o (__ [[:e :x :e]
+              [:o :o :o]
+              [:x :e :x]]))
+4. (= nil (__ [[:x :e :o]
+               [:x :x :e]
+               [:o :x :o]]))
+5. (= :x (__ [[:x :e :e]
+              [:o :x :e]
+              [:o :e :x]]))
+6. (= :o (__ [[:x :e :o]
+              [:x :o :e]
+              [:o :e :x]]))
+7. (= nil (__ [[:x :o :x]
+               [:x :o :x]
+               [:o :x :o]]))
+
+Solutions:
+
+1. (fn foo [xx]
+     (let [x00 ((xx 0) 0) x01 ((xx 0) 1) x02 ((xx 0) 2)
+           x10 ((xx 1) 0) x11 ((xx 1) 1) x12 ((xx 1) 2)
+           x20 ((xx 2) 0) x21 ((xx 2) 1) x22 ((xx 2) 2)]
+       (if (or (= :x x00 x01 x02)
+               (= :x x10 x11 x12)
+               (= :x x20 x21 x22)
+               (= :x x00 x10 x20)
+               (= :x x01 x11 x21)
+               (= :x x02 x12 x22)
+               (= :x x00 x11 x22)
+               (= :x x20 x11 x02))
+         :x
+         (if (or (= :o x00 x01 x02)
+                 (= :o x10 x11 x12)
+                 (= :o x20 x21 x22)
+                 (= :o x00 x10 x20)
+                 (= :o x01 x11 x21)
+                 (= :o x02 x12 x22)
+                 (= :o x00 x11 x22)
+                 (= :o x20 x11 x02))
+           :o))))
