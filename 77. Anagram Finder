@@ -12,7 +12,7 @@ Write a function which finds all the anagrams in a vector of words. A word x is 
 
 Solutions:
 
-1. (defn foo [xs]
+1. (fn foo [xs]
      (let [ys (set (for [x xs] (sort(seq x))))
            zs (for [y ys]
                 (filter (fn [x] (= y (sort (seq x)))) xs))
