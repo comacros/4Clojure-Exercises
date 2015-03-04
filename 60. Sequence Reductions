@@ -1,0 +1,30 @@
+http://www.4clojure.com/problem/60
+ 
+Difficulty:	Medium
+Topics:	seqs core-functions
+
+Write a function which behaves like reduce, but returns each intermediate value of the reduction. Your function must accept either two or three arguments, and the return sequence must be lazy.
+
+Special Restrictions: reductions
+
+1. (= (take 5 (__ + (range))) [0 1 3 6 10])
+2. (= (__ conj [1] [2 3 4]) [[1] [1 2] [1 2 3] [1 2 3 4]])
+3. (= (last (__ * 2 [3 4 5])) (reduce * 2 [3 4 5]) 120)
+
+Solutions:
+
+1. (fn foo
+     ([f xs]
+       (let [bar (fn [ys]
+                   (for [iy (map hash-map (range) ys)]
+                     (take (inc (first (keys iy))) ys)))
+             baz (fn [ys]
+                   (reduce f ys))]
+         (map baz (bar xs))))
+     ([f x xs]
+       (let [ff (fn [ys]
+                  (for [iy (map hash-map (range) ys)]
+                    (take (inc (first (keys iy))) ys)))
+             gg (fn [ys]
+                  (reduce f x ys))]
+         (map gg (conj (ff xs) [])))))
