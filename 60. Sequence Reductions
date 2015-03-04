@@ -28,3 +28,12 @@ Solutions:
              gg (fn [ys]
                   (reduce f x ys))]
          (map gg (conj (ff xs) [])))))
+
+2. (fn foo
+     ([f xs]
+       (foo f (first xs) (rest xs)))
+     ([f x xs]
+       (let [ff (fn [ys]
+                  (for [iy (map hash-map (range) ys)]
+                    (take (inc (first (keys iy))) ys)))]
+         (map (fn [s] (reduce f x s)) (conj (ff xs) [])))))
