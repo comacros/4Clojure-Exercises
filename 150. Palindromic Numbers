@@ -1,0 +1,68 @@
+http://www.4clojure.com/problem/150
+
+Difficulty:	Medium
+Topics:	seqs math
+
+A palindromic number is a number that is the same when written forwards or backwards (e.g., 3, 99, 14341).
+
+Write a function which takes an integer n, as its only argument, and returns an increasing lazy sequence of all palindromic numbers that are not less than n.
+
+The most simple solution will exceed the time limit!
+
+1. (= (take 26 (__ 0))
+      [0 1 2 3 4 5 6 7 8 9 
+       11 22 33 44 55 66 77 88 99 
+       101 111 121 131 141 151 161])
+2. (= (take 16 (__ 162))
+      [171 181 191 202 
+       212 222 232 242 
+       252 262 272 282 
+       292 303 313 323])
+3. (= (take 6 (__ 1234550000))
+      [1234554321 1234664321 1234774321 
+       1234884321 1234994321 1235005321])
+4. (= (first (__ (* 111111111 111111111)))
+      (* 111111111 111111111))
+5. (= (set (take 199 (__ 0)))
+      (set (map #(first (__ %)) (range 0 10000))))
+6. (= true 
+      (apply < (take 6666 (__ 9999999))))
+7. (= (nth (__ 0) 10101)
+      9102019)
+
+Solutions:
+
+1. (defn foo [x-in]
+     (let [make-mirror (fn f [n count-odd]
+                         (loop [y (if count-odd (quot n 10) n) z n]
+                           (if (> y 0)
+                             (recur (quot y 10) (+ (* z 10) (rem y 10)))
+                             z)))
+           count-digits (fn f [n]
+                          (loop [y n z 1]
+                            (if (< y 10)
+                              z
+                              (recur (quot y 10) (inc z)))))
+           count-half-digits (fn f [n]
+                               (let [x (count-digits n)]
+                                 (+ (quot x 2) (rem x 2))))
+           take-left (fn f [n]
+                       (quot n (apply * (repeat (- (count-digits n) (count-half-digits n)) 10))))
+           take-right (fn f [n]
+                        (rem n (apply * (repeat (count-half-digits n) 10))))
+           flip-number (fn f [n]
+                         (loop [x n y 0]
+                           (if (> x 0)
+                             (recur (quot x 10) (+ (* y 10) (rem x 10)))
+                             y)))
+           next-number (fn f [n]
+                         (let [left (take-left n)
+                               right (take-right n)]
+                           (if (> (count-digits (inc n)) (count-digits n))
+                             (+ 2 n)
+                             (if (<= (flip-number left) right)
+                               (make-mirror (inc left) (odd? (count-digits n)))
+                               (make-mirror left (odd? (count-digits n)))))))]
+       (if (= (flip-number (take-left x-in)) (take-right x-in))
+         (iterate next-number x-in)
+         (rest (iterate next-number x-in)))))
